@@ -1,0 +1,14 @@
+.cart {
+    display: flex;
+}
+
+.cartTotalArea {
+    border: 1px solid black;
+    align-self: right;
+    width: 25%;
+    height: fit-content;
+}
+
+.cartTotal {
+    padding: 0.2rem;
+}
