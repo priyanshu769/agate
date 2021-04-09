@@ -12,3 +12,7 @@
 .cartTotal {
     padding: 0.2rem;
 }
+
+.cartProducts {
+    width: 100%;
+}

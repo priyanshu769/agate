@@ -14,9 +14,11 @@
     --blue: #0074e4;
 }
 
-/* Body */
-body {
+/* App */
+.app {
     font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Buttons */
@@ -24,7 +26,7 @@ body {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--yellow);
     cursor: pointer;
     margin: 0.5rem 0;
 }
@@ -33,10 +35,10 @@ body {
 }
 .btnPrimary {
     color: var(--white);
-    background-color: var(--primary-color);
+    background-color: var(--yellow);
 }
 .btnSecondary {
-    color: var(--primary-color);
+    color: var(--yellow);
     background-color: var(--white);
 }
 .link {
@@ -52,3 +54,36 @@ body {
     right: 1rem;
 }
 
+/* Navbar */
+.navbar {
+    background-color: var(--yellow);
+    padding: 1px;
+    color: var(--white);
+}
+.navPill {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+.selectedNavPill {
+    font-weight: bold;
+}
+
+/* Link */
+
+.navLink {
+    text-decoration: none;
+    color: var(--white);
+}
+.link {
+    text-decoration: none;
+    color: var(--primary-dark);
+}
+
+/* List */
+
+.listInline {
+    display: flex;
+}
+.listStyleNone {
+    list-style-type: none;
+}
