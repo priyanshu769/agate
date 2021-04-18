@@ -1,5 +1,7 @@
 .cardHorizotalContainer{
-    width: 50%;
+    width: 25rem;
+    border-bottom: 2px solid #000000;
+    margin: 0.5rem;
 }
 
 .cardHorizontal {
@@ -8,23 +10,19 @@
 }
 
 /* Card */
-.card {
-    width: 18rem;
-    text-align: center;
-}
 .cardImgContainer {
-    width: 60%;
+    width: 10rem;
 }
 
 .textLeft {
     text-align: left;
 }
 .cardImg {
-    max-width: 100%;
+    max-width: 90%;
 }
 .cardDetails {
     text-align: left;
-    width: 100%;
+    width: 90%;
 }
 .cardName {
     font-weight: bold;
@@ -73,17 +71,9 @@
     position: relative;
 }
 
-.cardImgContainer {
-    width: 60%;
-}
 
-/* Buttons */
-
-.btnSimple {
-    border: none;
-    background-color: transparent;
-    padding: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-}
+@media only screen and (max-width: 600px) {
+    .cardHorizotalContainer{
+        width: 20rem;
+    }
+  }

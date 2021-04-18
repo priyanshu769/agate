@@ -13,6 +13,7 @@ const WishList = () => {
                         productBrand={wishedItem.brand}
                         price={wishedItem.price}
                         toCartFunc={() => dispatch({ TYPE: "AddToCart", PAYLOAD: wishedItem })}
+                        addToCartBtnStyle={app.cart.includes(wishedItem) ? "Already in Cart" : "Add To Cart"}
                         toWishListFunc={() => dispatch({ TYPE: "AddToWishlist", PAYLOAD: wishedItem })}
                         wishListBtnStyle={app.wishList.includes(wishedItem) ? "Added To Wishlist" : "Add To Wishlist"}
                     />

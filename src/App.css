@@ -54,14 +54,24 @@
     right: 1rem;
 }
 
+.btnSimple {
+    border: none;
+    background-color: transparent;
+    padding: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 /* Navbar */
 .navbar {
     background-color: var(--yellow);
-    padding: 1px;
-    color: var(--white);
+    padding: 0.2rem;
+    margin: auto;
+    margin-left: 0;
 }
 .navPill {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
 .selectedNavPill {
@@ -72,7 +82,6 @@
 
 .navLink {
     text-decoration: none;
-    color: var(--white);
 }
 .link {
     text-decoration: none;
@@ -86,4 +95,16 @@
 }
 .listStyleNone {
     list-style-type: none;
+}
+
+/* Input */
+.inputDiv {
+    padding: 0.5rem;
+}
+.input {
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    border: 1px solid var(--primary-dark);
+    border-radius: 3px;
 }

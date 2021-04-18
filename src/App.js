@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <ul className="navPills listStyleNone listInline">
-          <li className="navPill"><Link className="link" activeClassName="selectedNavPill" to="/">Home</Link></li>
-          <li className="navPill"><Link className="link" activeClassName="selectedNavPill" to="wish-list">WishList</Link></li>
-          <li className="navPill"><Link className="link" activeClassName="selectedNavPill" to="cart">Cart</Link></li>
-          <li className="navPill"><Link className="link" activeClassName="selectedNavPill" to="login">Login</Link></li>
+          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="/">Home</Link></li>
+          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="wish-list">WishList</Link></li>
+          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="cart">Cart</Link></li>
+          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="login">Login</Link></li>
         </ul>
       </nav>
       <Routes>

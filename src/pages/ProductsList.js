@@ -1,4 +1,4 @@
-import "./ProductsList.css";
+import "./styles/ProductsList.css";
 import ProductCard from "../components/Productcard";
 import { useApp } from "../contexts/AppContext";
 
@@ -54,6 +54,7 @@ const ProductsList = () => {
                             productBrand={product.brand}
                             price={product.price}
                             toCartFunc={() => dispatch({ TYPE: "AddToCart", PAYLOAD: product })}
+                            addToCartBtnStyle={app.cart.includes(product) ? "Already in Cart" : "Add To Cart"}
                             toWishListFunc={() => dispatch({ TYPE: "AddToWishlist", PAYLOAD: product })}
                             wishListBtnStyle={app.wishList.includes(product) ? "Added To Wishlist" : "Add To Wishlist"}
                         />

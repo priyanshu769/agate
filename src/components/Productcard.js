@@ -1,4 +1,4 @@
-import "./ProductCard.css"
+import "./styles/ProductCard.css"
 
 const ProductCard = (props) => {
     return (
@@ -14,7 +14,7 @@ const ProductCard = (props) => {
                 <span className="cardPrice">{props.price}</span>
             </p>
             <div className="cartOrWishlist">
-                <button onClick={props.toCartFunc} className="btn btnPrimary" href="#">Add To Cart</button>
+                <button onClick={props.toCartFunc} className="btn btnPrimary" href="#">{props.addToCartBtnStyle}</button>
                 <button onClick={props.toWishListFunc} className="btn btnSecondary" href="#">{props.wishListBtnStyle}</button>
             </div>
         </div>

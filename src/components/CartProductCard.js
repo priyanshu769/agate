@@ -1,4 +1,4 @@
-import "./CartProductCard.css"
+import "./styles/CartProductCard.css"
 
 const CartProductCard = (props) => {
     return (
@@ -6,7 +6,7 @@ const CartProductCard = (props) => {
             <div className="cardHorizontal">
                 <div className="cardWithBadge cardImgContainer">
                     <img className="cardImg" src={props.img} alt="Product Img" />
-                    <span className="dismiss dismissCard">X</span>
+                    {/*<span className="dismiss dismissCard">X</span>*/}
                 </div>
                 <div>
                     <p class="cardDetails">

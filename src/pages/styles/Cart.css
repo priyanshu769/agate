@@ -1,18 +1,17 @@
 .cart {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .cartTotalArea {
-    border: 1px solid black;
+    border-bottom: 2px solid #000000;
     align-self: right;
-    width: 25%;
+    width: 25rem;
+    margin: 0.5rem;
     height: fit-content;
 }
 
 .cartTotal {
     padding: 0.2rem;
-}
-
-.cartProducts {
-    width: 100%;
 }

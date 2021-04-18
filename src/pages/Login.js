@@ -1,3 +1,4 @@
+import "./styles/Login.css"
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router"
 import { useAuth } from "../contexts/AuthContext"
@@ -20,6 +21,7 @@ const Login = () => {
                 setLogin(true)
                 setLoading(false)
                 localStorage.setItem("loggedIn", JSON.stringify({ isUserLoggedin: true }))
+                navigate(state?.from ? state.from : "/")
             }
         } catch (error) {
             console.log("Wrong Credentials!", error)
@@ -28,9 +30,9 @@ const Login = () => {
 
     }
 
-    const loginHandler = () => {
+    const loginHandler = (e) => {
+        e.preventDefault()
         loginWithCredentials(username, password)
-        navigate(state?.from ? state.from : "/")
     }
 
     const logoutHandler = () => {
@@ -38,19 +40,23 @@ const Login = () => {
         setLogin(false)
         navigate("/")
     }
-    console.log(state)
     return (
-        <div>
+        <div className="loginArea">
             {isUserLoggedin ?
                 <div>
                     <h3>You are logged in!</h3>
-                    <button onClick={logoutHandler}>Logout</button>
+                    <button className="btn btnSecondary" onClick={logoutHandler}>Logout</button>
                 </div>
                 :
                 <div>
-                    <input type="text" onChange={(e) => setUsername(username => e.target.value)} />
-                    <input type="password" onChange={(e) => setPassword(passowrd => e.target.value)} />
-                    <button onClick={loginHandler}>{loading ? "Logging In..." : "Login"}</button>
+                    <h2>Login</h2>
+                    <form>
+                        <input className="input" type="text" placeholder="Username" onChange={(e) => setUsername(username => e.target.value)} />
+                        <br />
+                        <input className="input" type="password" placeholder="Password" onChange={(e) => setPassword(passowrd => e.target.value)} />
+                        <br />
+                        <button type="submit" className="btn btnPrimary" onClick={loginHandler}>{loading ? "Logging In..." : "Login"}</button>
+                    </form>
                 </div>}
         </div>
     )

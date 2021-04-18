@@ -1,4 +1,4 @@
-import "./Cart.css";
+import "./styles/Cart.css";
 import { useApp } from "../contexts/AppContext";
 import CartProductCard from "../components/CartProductCard";
 
