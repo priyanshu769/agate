@@ -5,8 +5,7 @@ const CartProductCard = (props) => {
         <div className="cardHorizotalContainer">
             <div className="cardHorizontal">
                 <div className="cardWithBadge cardImgContainer">
-                    <img className="cardImg" src={props.img} alt="Product Img" />
-                    {/*<span className="dismiss dismissCard">X</span>*/}
+                    <img className="cardImgCart" src={props.img} alt="Product Img" />
                 </div>
                 <div>
                     <p class="cardDetails">

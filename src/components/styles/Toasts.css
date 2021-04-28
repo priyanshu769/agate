@@ -1,0 +1,43 @@
+/* Root */
+:root {
+    --primary-color: #ff6000;
+    --primary-dark: #282b2d;
+    --primary-grey: #93979c;
+    --light-grey: #c9d6df;
+    --white: #ffffff;
+    --red: #ff005c;
+    --green: #2eb872;
+    --yellow: #ffc300;
+    --blue: #0074e4;
+}
+
+.toast {
+    margin: 0.5rem;
+    border-radius: 1rem;
+    color: var(--white);
+    width: fit-content;
+}
+
+.toastSuccess {
+    background-color: var(--green);
+}
+
+.toastError {
+    background-color: var(--red);
+}
+
+.toastText {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.toastButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.toastButton:focus {
+    border: none;
+}

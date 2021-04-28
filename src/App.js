@@ -8,15 +8,15 @@ import PrivateRoute from "./components/PrivateRoute"
 import { useAuth } from "./contexts/AuthContext"
 
 function App() {
-  const { isUserLoggedin } = useAuth()
+  const { loggedIn } = useAuth()
   return (
     <div className="App">
       <nav className="navbar">
         <ul className="navPills listStyleNone listInline">
-          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="/">Home</Link></li>
-          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="wish-list">WishList</Link></li>
-          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="cart">Cart</Link></li>
-          <li className="navPill listInline"><Link className="link" activeClassName="selectedNavPill" to="login">Login</Link></li>
+          <li className="navPill listInline"><Link className="link" activeclassname="selectedNavPill" to="/">Home</Link></li>
+          <li className="navPill listInline"><Link className="link" activeclassname="selectedNavPill" to="wish-list">WishList</Link></li>
+          <li className="navPill listInline"><Link className="link" activeclassname="selectedNavPill" to="cart">Cart</Link></li>
+          <li className="navPill listInline"><Link className="link" activeclassname="selectedNavPill" to="login">Login</Link></li>
         </ul>
       </nav>
       <Routes>
@@ -24,13 +24,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         {/* <Route path="/wish-list" element={<WishList />} /> */}
         <PrivateRoute
-        login={isUserLoggedin}
+        login={loggedIn?.isUserLoggedIn}
         element={<WishList />}
         path="/wish-list"
         />
         {/* <Route path="/cart" element={<Cart />} />*/}
         <PrivateRoute
-        login={isUserLoggedin}
+        login={loggedIn?.isUserLoggedIn}
         element={<Cart />}
         path="/cart"
         />

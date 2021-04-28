@@ -17,8 +17,9 @@
 .textLeft {
     text-align: left;
 }
-.cardImg {
+.cardImgCart {
     max-width: 90%;
+    height: auto;
 }
 .cardDetails {
     text-align: left;

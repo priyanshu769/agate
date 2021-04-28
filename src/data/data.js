@@ -1,39 +1,3 @@
-import faker from "faker";
-
-faker.seed(123);
-
-export const products = [...Array(50)].map((item) => ({
-    id: faker.random.uuid(),
-    name: faker.commerce.productName(),
-    image: faker.random.image(),
-    price: faker.commerce.price(),
-    material: faker.commerce.productMaterial(),
-    brand: faker.lorem.word(),
-    inStock: faker.random.boolean(),
-    fastDelivery: faker.random.boolean(),
-    ratings: faker.random.arrayElement([1, 2, 3, 4, 5]),
-    offer: faker.random.arrayElement([
-        "Save 50",
-        "70% bonanza",
-        "Republic Day Sale"
-    ]),
-    idealFor: faker.random.arrayElement([
-        "Men",
-        "Women",
-        "Girl",
-        "Boy",
-        "Senior"
-    ]),
-    level: faker.random.arrayElement([
-        "beginner",
-        "amateur",
-        "intermediate",
-        "advanced",
-        "professional"
-    ]),
-    color: faker.commerce.color()
-}));
-
 export const cart = [];
 
 export const wishList = [];
@@ -47,12 +11,12 @@ export const sortType = null;
 export const reducer = (state, action) => {
     switch (action.TYPE) {
         case "remove":
-            return { ...state, cart: state.cart.filter(item => item.id !== action.PAYLOAD.id) };
+            return { ...state, cart: state.cart.filter(item => item._id !== action.PAYLOAD._id) };
         case "decrement":
             return {
                 ...state,
                 cart: state.cart.map(item =>
-                    item.id === action.PAYLOAD.id ?
+                    item._id === action.PAYLOAD._id ?
                         { ...item, quantity: item.quantity - 1 } :
                         item
                 )
@@ -61,15 +25,16 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 cart: state.cart.map(item =>
-                    item.id === action.PAYLOAD.id ?
+                    item._id === action.PAYLOAD._id ?
                         { ...item, quantity: item.quantity + 1 } :
                         item
                 )
             }
         case "AddToWishlist":
-            if (state.wishList.includes(action.PAYLOAD)) {
-                return { ...state, wishList: state.wishList.filter(wishedItem => wishedItem.id !== action.PAYLOAD.id) }
-            } else return { ...state, wishList: state.wishList.concat(action.PAYLOAD) };
+            const productInWishList = state.wishList.find(product => product._id === action.PAYLOAD._id)
+            if (productInWishList) {
+                return { ...state, wishList: state.wishList.filter(wishedItem => wishedItem._id !== action.PAYLOAD._id) }
+            } else return { ...state, wishList: state.wishList.concat(action.PAYLOAD) }
         case "AddToCart":
             return { ...state, cart: [...state.cart, { ...action.PAYLOAD, quantity: 1 }] }
         case "ONLY_FAST_DELIVERY":
@@ -80,6 +45,8 @@ export const reducer = (state, action) => {
             return { ...state, sortType: action.TYPE }
         case "HIGH_TO_LOW":
             return { ...state, sortType: action.TYPE }
+        case "LOAD_CART_WISHLIST":
+            return { ...state, cart: action.PAYLOAD.cart, wishList: action.PAYLOAD.wishlist }
         default:
             // Do nothing;    
             break;

@@ -3,18 +3,17 @@ import { createContext, useContext, useState, useEffect } from "react";
 const Auth = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isUserLoggedin, setLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userCredentials, setUserCredentials] = useState(null)
 
-  useEffect(()=> {
+  useEffect(() => {
     const loginStatus = JSON.parse(localStorage.getItem("loggedIn"))
-    if (loginStatus) {
-        setLogin(loginStatus.isUserLoggedin)
-    }
-}, [])
+    setLoggedIn(loginStatus)
+  }, [])
 
   return (
-    <Auth.Provider value={{ isUserLoggedin, setLogin, loading, setLoading }}>
+    <Auth.Provider value={{ loggedIn, setLoggedIn, loading, setLoading, userCredentials, setUserCredentials }}>
       {children}
     </Auth.Provider>
   );

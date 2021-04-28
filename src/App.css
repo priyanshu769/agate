@@ -23,7 +23,6 @@
 
 /* Buttons */
 .btn {
-    text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     border: 3px solid var(--yellow);
@@ -47,7 +46,7 @@
 }
 .btnIcon {
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--white);
 }
 .btnFloating {
     position: fixed;
