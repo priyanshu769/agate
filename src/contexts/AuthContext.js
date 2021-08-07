@@ -1,19 +1,13 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const Auth = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [userCredentials, setUserCredentials] = useState(null)
-
-  useEffect(() => {
-    const loginStatus = JSON.parse(localStorage.getItem("loggedIn"))
-    setLoggedIn(loginStatus)
-  }, [])
+  const [loggedInToken, setLoggedInToken] = useState(null);
+  const [user, setUser] = useState(null);
 
   return (
-    <Auth.Provider value={{ loggedIn, setLoggedIn, loading, setLoading, userCredentials, setUserCredentials }}>
+    <Auth.Provider value={{ loggedInToken, user, setLoggedInToken, setUser }}>
       {children}
     </Auth.Provider>
   );

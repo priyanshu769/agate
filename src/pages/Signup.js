@@ -5,9 +5,10 @@ import { useAuth } from '../contexts/AuthContext'
 import axios from 'axios'
 import { useApp } from '../contexts/AppContext'
 import { loadCart } from '../functions/functions'
-import { Link } from 'react-router-dom'
 
 const Login = () => {
+  const [name, setName] = useState(null)
+  const [username, setUsername] = useState(null)
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [loading, setLoading] = useState(null)
@@ -23,13 +24,15 @@ const Login = () => {
     }
   }, [loggedInToken, navigate])
 
-  const loginHandler = async () => {
+  const signupHandler = async () => {
     if (!loggedInToken) {
       try {
         setLoading(true)
         const { data } = await axios.post(
-          'https://api-agate.herokuapp.com/login',
+          'https://api-agate.herokuapp.com/signup',
           {
+              name: name,
+              username: username,
             email: email,
             password: password,
           },
@@ -75,6 +78,20 @@ const Login = () => {
           <input
             className="input"
             type="text"
+            placeholder="Name"
+            onChange={(e) => setName(() => e.target.value)}
+          />
+          <br />
+          <input
+            className="input"
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setUsername(() => e.target.value)}
+          />
+          <br />
+          <input
+            className="input"
+            type="text"
             placeholder="Email"
             onChange={(e) => setEmail(() => e.target.value)}
           />
@@ -93,18 +110,12 @@ const Login = () => {
           <button
             type="submit"
             className="btn btnPrimary"
-            onClick={loginHandler}
+            onClick={signupHandler}
           >
-            {loading ? 'Logging In...' : 'Login'}
+            {loading ? 'Signing Up...' : 'Signup'}
           </button>
         </div>
       )}
-      <p>
-        <small>New to Agate? </small>
-        <Link to="/signup">
-          <bold>Signup</bold>
-        </Link>
-      </p>
     </div>
   )
 }

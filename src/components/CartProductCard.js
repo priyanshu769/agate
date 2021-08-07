@@ -24,7 +24,7 @@ const CartProductCard = (props) => {
             </div>
             <div className="cardHorizontalBtnContainer">
                 <button onClick={props.removeFunc} className="btnSimple">Remove</button>
-                <button onClick={props.toWishListFunc} className="btnSimple">{props.wishListBtnStyle}</button>
+                <button disabled={props.addToCartBtnStyle === "Already in Cart" ? true : ""} onClick={props.toWishListFunc} className="btnSimple">{props.wishListBtnStyle}</button>
             </div>
         </div>
     )
