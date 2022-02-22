@@ -1,0 +1,69 @@
+/* Root */
+:root {
+    --primary-color: #ff6000;
+    --primary-dark: #282b2d;
+    --primary-grey: #93979c;
+    --light-grey: #c9d6df;
+    --white: #ffffff;
+    --red: #ff005c;
+    --green: #2eb872;
+    --yellow: #ffc300;
+    --blue: #0074e4;
+}
+
+/* Card */
+.card {
+    width: 18rem;
+    padding: 0.3rem;
+}
+
+.cardWithBadge {
+    position: relative;
+}
+
+.cardImg {
+    max-width: 100%;
+    height: 14rem;
+}
+
+.btnWishList {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    background: var(--light-grey);
+    border-radius: 100%;
+    padding: 0.5rem;
+    box-shadow: 1px 3px 5px var(--primary-dark);
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.cardDetails {
+    text-align: center;
+}
+
+.cardName {
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.cardSectionName {
+    color: var(--primary-grey);
+}
+
+.cardPrice {
+    font-weight: bold;
+    font-size: 5.5rem;
+}
+
+.cartOrWishlist {
+    margin-bottom: 1rem;
+    margin: auto;
+    width: 100%;
+}
+
+.btnAddToCart {
+    width: 90%;
+}

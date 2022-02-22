@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+/* Import */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+/* Root */
+:root {
+    --primary-color: #ff6000;
+    --primary-dark: #282b2d;
+    --primary-grey: #93979c;
+    --light-grey: #c9d6df;
+    --white: #ffffff;
+    --red: #ff005c;
+    --green: #2eb872;
+    --yellow: #ffc300;
+    --blue: #0074e4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* App */
+.app {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: 3px solid var(--yellow);
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+.btn:focus{
+    outline: none;
+}
+.btnPrimary {
+    color: var(--white);
+    background-color: var(--yellow);
+}
+.btnSecondary {
+    color: var(--yellow);
+    background-color: var(--white);
+}
+.link {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.btnIcon {
+    text-decoration: none;
+    color: var(--white);
+}
+.btnFloating {
+    position: fixed;
+    right: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btnSimple {
+    border: none;
+    background-color: transparent;
+    padding: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+/* Navbar */
+.navbar {
+    background-color: var(--yellow);
+    padding: 0.2rem;
+    margin: auto;
+    margin-left: 0;
+}
+.navPill {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.selectedNavPill {
+    font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Link */
+
+.navLink {
+    text-decoration: none;
+}
+.link {
+    text-decoration: none;
+    color: var(--primary-dark);
+}
+
+/* List */
+
+.listInline {
+    display: flex;
+}
+.listStyleNone {
+    list-style-type: none;
+}
+
+/* Input */
+.inputDiv {
+    padding: 0.5rem;
+}
+.input {
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    border: 1px solid var(--primary-dark);
+    border-radius: 3px;
 }
