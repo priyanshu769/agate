@@ -1,0 +1,19 @@
+.checkoutBox {
+        border: 2px solid var(--off-white);
+        border-radius: 0.5rem;
+        box-shadow: 2px 3px var(--off-white);
+        width: 25rem;
+        padding: 2rem 0.5rem;
+        text-align: center;
+        margin: auto;
+        margin-top: 2rem;
+}
+
+.ordersBtn {
+    cursor: pointer;
+    width: 70%;
+    padding: 0.5rem 0;
+    color: var(--white);
+    border: none;
+    background-color: var(--primary-color);
+}

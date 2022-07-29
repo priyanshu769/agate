@@ -1,0 +1,17 @@
+.productsContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.sortAndFiltersBtn {
+    background: none;
+    margin: 0.5rem;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.sortAndFilters {
+    width: auto;
+    position: absolute;
+    background-color: var(--white);
+}

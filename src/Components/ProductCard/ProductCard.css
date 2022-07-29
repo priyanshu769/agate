@@ -1,0 +1,59 @@
+.productCard {
+    width: 15rem;
+    margin: 0.5rem;
+}
+
+.productImg {
+    max-width: 100%;
+    max-height: 10rem;
+}
+
+.productName {
+    font-size: 100;
+    font-weight: 600;
+}
+
+.productPrice {
+    font-weight: 600;
+}
+
+.cardBtnContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addToCartBtn {
+    cursor: pointer;
+    width: 80%;
+    padding: 0.5rem 0;
+    color: var(--white);
+    border: none;
+    background-color: var(--primary-color);
+}
+
+.addToCartBtn:disabled {
+    cursor: not-allowed;
+    color: var(--off-grey);
+    background-color: var(--dark-grey);
+}
+
+.addToWishlistBtn {
+    cursor: pointer;
+    padding: 0.5rem;
+    border: none;
+    background-color: var(--white);
+}
+
+@media only screen and (max-width: 480px) {
+    .productCard {
+        width: 8rem;
+    }
+
+    .productImg {
+        max-height: 7rem;
+    }
+
+    .productName {
+        font-size: 75;
+    }
+}

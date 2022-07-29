@@ -1,109 +1,58 @@
-/* Import */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-/* Root */
 :root {
-    --primary-color: #ff6000;
-    --primary-dark: #282b2d;
-    --primary-grey: #93979c;
-    --light-grey: #c9d6df;
-    --white: #ffffff;
-    --red: #ff005c;
-    --green: #2eb872;
-    --yellow: #ffc300;
-    --blue: #0074e4;
+  --primary-color: #3F37C9;
+  --primary-dark: #0D1117;
+  --dark-grey: #374151;
+  --off-grey: #B7B7A4;
+  --off-white: #F3F4F6;
+  --white: #FFFFFF;
 }
 
-/* App */
-.app {
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
+.App {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Buttons */
-.btn {
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    border: 3px solid var(--yellow);
-    cursor: pointer;
-    margin: 0.5rem 0;
-}
-.btn:focus{
-    outline: none;
-}
-.btnPrimary {
-    color: var(--white);
-    background-color: var(--yellow);
-}
-.btnSecondary {
-    color: var(--yellow);
-    background-color: var(--white);
-}
-.link {
-    text-decoration: none;
-    color: var(--primary-color);
-}
-.btnIcon {
-    text-decoration: none;
-    color: var(--white);
-}
-.btnFloating {
-    position: fixed;
-    right: 1rem;
-}
-
-.btnSimple {
-    border: none;
-    background-color: transparent;
-    padding: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-/* Navbar */
 .navbar {
-    background-color: var(--yellow);
-    padding: 0.2rem;
-    margin: auto;
-    margin-left: 0;
-}
-.navPill {
-    padding: 0.5rem;
-    cursor: pointer;
-}
-.selectedNavPill {
-    font-weight: bold;
+  width: 100%;
+  margin: 0;
+  background-color: var(--primary-color);
 }
 
-/* Link */
+.navbarAbsolute {
+  width: 50%;
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: var(--primary-color);
+  position: absolute;
+}
+
+.navBullets {
+  margin: 0 -1rem;
+}
+
+.navBullet {
+  color: var(--off-white);
+  display: inline-block;
+  font-weight: 900;
+  padding: 1rem;
+}
 
 .navLink {
-    text-decoration: none;
-}
-.link {
-    text-decoration: none;
-    color: var(--primary-dark);
+  color: inherit;
+  text-decoration: none;
 }
 
-/* List */
+.navBtn {
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  font-weight: 500;
+  font-size: medium;
+}
 
-.listInline {
-    display: flex;
-}
-.listStyleNone {
-    list-style-type: none;
-}
-
-/* Input */
-.inputDiv {
-    padding: 0.5rem;
-}
-.input {
-    width: 10rem;
-    padding: 0.5rem;
-    margin: 0.3rem;
-    border: 1px solid var(--primary-dark);
-    border-radius: 3px;
+.displayHidden {
+  display: none;
 }
