@@ -1,32 +1,48 @@
 import React, { useState } from 'react'
 import './LoginSignup.css'
 import { Link } from 'react-router-dom'
-import { signupHandle } from '../../Utils'
+import { showToast, signupHandle } from '../../Utils'
 import { useAuth } from '../../Context/AuthContext'
+import { useToast } from '../../Context/ToastContext'
+import { LoadingSmall } from "../../Components"
 
 export const Signup = () => {
   const [name, setName] = useState('')
-  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [rePassword, setRePasswrod] = useState('')
+  const [rePassword, setRePassword] = useState('')
+  const [showPass, setShowPass] = useState(false)
+  const [loader, setLoader] = useState(false)
   const { auth, authDispatch } = useAuth()
+  const { toastDispatch } = useToast()
+
 
   const signup = () => {
-    if (password === rePassword) {
-      signupHandle(
-        auth.loggedInToken,
-        name,
-        username,
-        email,
-        rePassword,
-        authDispatch,
-      )
-    }
+    if (email.includes('@')) {
+      if (password === rePassword) {
+        signupHandle(
+          auth.loggedInToken,
+          name,
+          email,
+          rePassword,
+          authDispatch,
+          toastDispatch,
+          setLoader
+        )
+      } else { showToast(toastDispatch, "Paswords does not match") }
+    } else { showToast(toastDispatch, "Please add a valid email") }
+  }
+
+  const fillDummyData = () => {
+    setName("Priyanshu")
+    setEmail("prynsu@yahoo.com")
+    setPassword("priyanshu")
+    setRePassword("priyanshu")
   }
 
   return (
     <div className="loginSignupBox">
+      <h2>Sign Up</h2>
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -35,38 +51,40 @@ export const Signup = () => {
         type="text"
       />
       <input
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="inputBox"
-        placeholder="Username"
-        type="text"
-      />
-      <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="inputBox"
         placeholder="Email"
-        type="text"
+        type="email"
       />
       <input
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="inputBox"
         placeholder="New Password"
-        type="password"
+        type={showPass ? 'text' : 'password'}
       />
       <input
         value={rePassword}
-        onChange={(e) => setRePasswrod(e.target.value)}
+        onChange={(e) => setRePassword(e.target.value)}
         className="inputBox"
         placeholder="Confirm Password"
-        type="password"
+        type={showPass ? 'text' : 'password'}
       />
+      <br />
+      <input
+        onChange={() => setShowPass(showPass => !showPass)}
+        checked={showPass}
+        type='checkbox' />
+      <label>Show Password</label>
       <button onClick={() => signup()} className="loginSignupBtn">
-        Signup
+        {loader ? <LoadingSmall /> : "Signup"}
+      </button>
+      <button onClick={() => fillDummyData()} className="loginSignupBtn">
+        Fill Dummy Data
       </button>
       <p>
-        Already a user, <Link to="/login">Login</Link>.
+        Already a user, <Link className='loginSignupLink' to="/login">Login</Link>.
       </p>
     </div>
   )

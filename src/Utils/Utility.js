@@ -6,20 +6,23 @@ export const loginHandler = async (
   password,
   authDispatch,
   appDispatch,
-  setWrongCredentials,
+  toastDispatch,
+  setLoader,
   navigate,
 ) => {
   if (!loggedInToken) {
+    setLoader(true)
+    showToast(toastDispatch, "Logging In")
     try {
       const loginResponse = await axios.post(
         'https://api-agate.herokuapp.com/login',
         { email: email, password: password },
-      )
-      console.log(loginResponse)
-      if (loginResponse.data.success) {
-        localStorage.setItem(
-          'loggedInAgate',
-          JSON.stringify({ token: loginResponse.data.token }),
+        )
+        console.log(loginResponse.data)
+        if (loginResponse.data.success) {
+          localStorage.setItem(
+            'loggedInAgate',
+            JSON.stringify({ token: loginResponse.data.token }),
         )
         authDispatch({ TYPE: 'set_user', PAYLOAD: loginResponse.data.user })
         authDispatch({
@@ -28,22 +31,28 @@ export const loginHandler = async (
         })
         loadCart(loginResponse.data.token, appDispatch)
         navigate('/')
+        showToast(toastDispatch, "Logging In")
+        setLoader(false)
+      } else {
+        showToast(toastDispatch, "Unable to login, check credentials.")
+        setLoader(false)
       }
     } catch (error) {
       console.log('Login Failed!', error)
-      setWrongCredentials(true)
+      setLoader(false)
     }
   }
 }
 
-export const signupHandle = async (userToken, name, username, email, password, authDispatch) => {
+export const signupHandle = async (userToken, name, email, password, authDispatch, toastDispatch, setLoader) => {
   try {
+    setLoader(true)
+    showToast(toastDispatch, "Signing you up")
     if (!userToken) {
       const signupResponse = await axios.post(
         'https://api-agate.herokuapp.com/signup',
         {
           name: name,
-          username: username,
           email: email,
           password: password,
         },
@@ -55,8 +64,15 @@ export const signupHandle = async (userToken, name, username, email, password, a
         )
         authDispatch({ TYPE: 'set_loggedInToken', PAYLOAD: signupResponse.data.token })
         authDispatch({ TYPE: 'set_user', PAYLOAD: signupResponse.data.user })
-      }
-    } else console.log('User already logged in.')
+        setLoader(false)
+      } else {
+        showToast(toastDispatch, signupResponse.data.message)}
+        setLoader(false)
+      } else {
+        console.log('User already logged in.')
+        showToast(toastDispatch, "Already logged in")
+        setLoader(false)
+    }
   } catch (error) {
     console.log('Something went wrong', error)
   }
@@ -178,7 +194,7 @@ export const logoutHandle = async (userToken, authDispatch, appDispatch) => {
       TYPE: 'set_user',
       PAYLOAD: null,
     })
-    appDispatch({TYPE: 'set_cart', PAYLOAD: null})
+    appDispatch({ TYPE: 'set_cart', PAYLOAD: null })
   } else console.log('You are not logged in.')
 }
 
@@ -227,7 +243,7 @@ export const addToCarBtnStyle = (productId, inStock, cart) => {
     return 'Already in Cart'
   } else if (!inStock) {
     return 'Out of Stock'
-  } else if(!productInCart && inStock) {
+  } else if (!productInCart && inStock) {
     return 'Add To Cart'
   }
 }

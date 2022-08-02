@@ -1,59 +1,74 @@
 import React, { useState } from 'react'
 import './LoginSignup.css'
 import { Link } from 'react-router-dom'
-import { loginHandler } from '../../Utils'
+import { loginHandler, showToast } from '../../Utils'
 import { useAuth } from '../../Context/AuthContext'
 import { useApp } from '../../Context/AppContext'
-import {useNavigate} from 'react-router'
+import { useNavigate } from 'react-router'
+import { useToast } from '../../Context/ToastContext'
+import { LoadingSmall } from '../../Components'
 
 export const Login = () => {
   const { auth, authDispatch } = useAuth()
   const { appDispatch } = useApp()
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
-  const [wrongCredentials, setWrongCredentials] = useState(false)
+  const { toastDispatch } = useToast()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPass, setShowPass] = useState(false)
+  const [loader, setLoader] = useState(false)
   const navigate = useNavigate()
 
   const loggingIn = () => {
-    loginHandler(
-      auth.loggedInToken,
-      email,
-      password,
-      authDispatch,
-      appDispatch,
-      setWrongCredentials,
-      navigate
-    )
+    if (email.includes('@')) {
+      loginHandler(
+        auth.loggedInToken,
+        email,
+        password,
+        authDispatch,
+        appDispatch,
+        toastDispatch,
+        setLoader,
+        navigate
+      )
+    } else {showToast(toastDispatch, "Please add a valid email")}
+  }
+
+  const guestLogIn = () => {
+    setEmail('prynsu@yahoo.com')
+    setPassword('priyanshu')
   }
 
   return (
     <div className="loginSignupBox">
+      <h2>Log In</h2>
       <input
         className="inputBox"
         placeholder="Email"
-        type="text"
+        type="email"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
         className="inputBox"
         placeholder="Password"
-        type="password"
+        type={showPass ? 'text' : 'password'}
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <br />
+      <input 
+      onChange={()=> setShowPass(showPass => !showPass)}
+      checked={showPass}
+      type='checkbox' />
+      <label>Show Password</label>
       <button className="loginSignupBtn" onClick={() => loggingIn()}>
-        Login
+        {loader ? <LoadingSmall /> : "Login"}
       </button>
-      <p
-        style={
-          wrongCredentials
-            ? { display: 'block', color: 'red' }
-            : { display: 'none' }
-        }
-      >
-        Wrong Credentials
-      </p>
+      <button className="loginSignupBtn" onClick={() => guestLogIn()}>
+        Guest Credentials
+      </button>
       <p>
-        Already a user, <Link to="/signup">Signup</Link>.
+        Not a user, <Link className='loginSignupLink' to="/signup">Signup</Link>.
       </p>
     </div>
   )
