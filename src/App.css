@@ -14,10 +14,20 @@
   overflow-x: hidden;
 }
 
+.logoContainer {
+  margin: 0 0 0 1rem;
+}
+
+.logoImg {
+  width: 3rem;
+}
+
 .navbar {
   width: 100%;
   margin: 0;
   background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbarAbsolute {
@@ -29,7 +39,7 @@
 }
 
 .navBullets {
-  margin: 0 -1rem;
+  margin: 0 1rem;
 }
 
 .navBullet {

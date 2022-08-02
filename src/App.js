@@ -13,7 +13,10 @@ import { useEffect, useState } from 'react'
 import { useAuth } from './Context/AuthContext'
 import { useApp } from './Context/AppContext'
 import { useToast } from './Context/ToastContext'
-import { Toast} from './Components'
+import { Toast } from './Components'
+import agateLogo from "./Assets/Images/agateLogo.png"
+import { BsCart3, BsFillHeartFill } from 'react-icons/bs'
+import { FaUserAlt } from 'react-icons/fa'
 
 function App() {
   const { auth, authDispatch } = useAuth()
@@ -35,45 +38,50 @@ function App() {
   }, [authDispatch, appDispatch])
 
   useEffect(() => {
-    if(toast.showToast){
+    if (toast.showToast) {
       setTimeout(() => hideToast(toastDispatch), 4000)
     }
   }, [toast, toastDispatch])
-  
+
 
   return (
     <div className="App">
       <nav className="navbar">
-        <ul className="navBullets">
-          <li className="navBullet">
-            <Link className="navLink" activeclassname="selectedNavPill" to="/">
-              Home
-            </Link>
-          </li>
-          <li className="navBullet">
-            <Link
-              className="navLink"
-              activeclassname="selectedNavPill"
-              to="/wishlist"
-            >
-              Wishlist
-            </Link>
-          </li>
-          <li className="navBullet">
-            <Link
-              className="navLink"
-              activeclassname="selectedNavPill"
-              to="/cart"
-            >
-              Cart
-            </Link>
-          </li>
-          <li className="navBullet">
-            <button onClick={() => setUserFeat(!userFeat)} className="navBtn">
-              User
-            </button>
-          </li>
-        </ul>
+        <div className='logoContainer'>
+          <Link className="navLink" activeclassname="selectedNavPill" to="/">
+            <img className='logoImg' src={agateLogo} alt="Agate Logo" />
+          </Link>
+        </div>
+        <div className='navBulletsContainer'>
+          <ul className="navBullets">
+            <li className="navBullet">
+
+            </li>
+            <li className="navBullet">
+              <Link
+                className="navLink"
+                activeclassname="selectedNavPill"
+                to="/wishlist"
+              >
+                <BsFillHeartFill size={25} />
+              </Link>
+            </li>
+            <li className="navBullet">
+              <Link
+                className="navLink"
+                activeclassname="selectedNavPill"
+                to="/cart"
+              >
+                <BsCart3 size={25} />
+              </Link>
+            </li>
+            <li className="navBullet">
+              <button onClick={() => setUserFeat(!userFeat)} className="navBtn">
+                <FaUserAlt size={25} />
+              </button>
+            </li>
+          </ul>
+        </div>
       </nav>
       <div className={userFeat ? 'navbarAbsolute' : 'displayHidden'}>
         <ul className="navBullets">
