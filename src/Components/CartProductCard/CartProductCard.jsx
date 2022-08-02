@@ -23,7 +23,7 @@ export const CartProductCard = (props) => {
           </span>
           <button onClick={props.removeFromCartHandle} className="removeBtn">Remove</button>
           <button onClick={props.addToWishlistHandle} className="addToWishlistBtn">
-            {props.wishListBtnStyle ? <BsFillHeartFill /> : <BsHeart />}
+            {props.wishListBtnStyle ? <BsFillHeartFill size={15} /> : <BsHeart size={15} />}
           </button>
         </p>
       </div>
