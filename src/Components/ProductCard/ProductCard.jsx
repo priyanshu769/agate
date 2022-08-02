@@ -18,7 +18,7 @@ export const ProductCard = (props) => {
       <p className="cardBtnContainer">
         <button
           onClick={props.addToCartHandle}
-          disabled={props.productCardBtnText === 'Already in Cart'}
+          disabled={props.productCardBtnText === 'Add To Cart' ? false : true}
           className="addToCartBtn"
         >
           {props.productCardBtnText}

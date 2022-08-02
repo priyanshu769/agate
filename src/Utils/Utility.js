@@ -220,11 +220,15 @@ export const wishListBtnStyle = (productId, user) => {
   } else return false
 }
 
-export const addToCarBtnStyle = (productId, cart) => {
+export const addToCarBtnStyle = (productId, inStock, cart) => {
   const productInCart = cart?.find((item) => item.product._id === productId)
   if (productInCart) {
     return 'Already in Cart'
-  } else return 'Add To Cart'
+  } else if (!inStock) {
+    return 'Out of Stock'
+  } else if(!productInCart && inStock) {
+    return 'Add To Cart'
+  }
 }
 
 // Cart Item Increment/Decrement

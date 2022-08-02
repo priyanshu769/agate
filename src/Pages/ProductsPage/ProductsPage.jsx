@@ -113,7 +113,7 @@ export const ProductsPage = () => {
                 )
               }
               }
-              productCardBtnText={addToCarBtnStyle(product._id, app.cart)}
+              productCardBtnText={addToCarBtnStyle(product._id, product.stock, app.cart)}
               wishListBtnStyle={wishListBtnStyle(product._id, auth.user)}
             />
           )
