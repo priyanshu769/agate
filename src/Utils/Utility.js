@@ -167,7 +167,7 @@ export const addToWishlistHandle = async (
   } else navigate('/login')
 }
 
-export const logoutHandle = async (userToken, authDispatch) => {
+export const logoutHandle = async (userToken, authDispatch, appDispatch) => {
   if (userToken) {
     localStorage.removeItem('loggedInAgate')
     authDispatch({
@@ -178,6 +178,7 @@ export const logoutHandle = async (userToken, authDispatch) => {
       TYPE: 'set_user',
       PAYLOAD: null,
     })
+    appDispatch({TYPE: 'set_cart', PAYLOAD: null})
   } else console.log('You are not logged in.')
 }
 

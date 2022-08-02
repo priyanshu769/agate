@@ -82,24 +82,21 @@ function App() {
           </ul>
         </div>
       </nav>
-      <div className={userFeat ? 'navbarAbsolute' : 'displayHidden'}>
+      <div className={userFeat ? 'userOptions' : 'userOptionsHidden'}>
         <ul className="navBullets">
-          <li className="navBullet">
-            {auth.loggedInToken ? auth.user?.name : 'Unknown'}
-          </li>
-          <li className={!auth.loggedInToken ? 'navBullet' : 'displayHidden'}>
+          <li className='navBullet'>
             <Link
               className="navLink"
               activeclassname="selectedNavPill"
-              to="/login"
+              to={auth.loggedInToken ? "" : "/login"}
             >
-              Login
+            {auth.loggedInToken ? auth.user?.name : 'Login'}
             </Link>
           </li>
           <li className="navBullet">
             <button
-              onClick={() => logoutHandle(auth.loggedInToken, authDispatch)}
-              className={auth.loggedInToken ? 'navBtn' : 'displayHidden'}
+              onClick={() => logoutHandle(auth.loggedInToken, authDispatch, appDispatch)}
+              className={auth.loggedInToken ? 'navBtn' : 'userOptionsHidden'}
             >
               Logout
             </button>

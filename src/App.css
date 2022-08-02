@@ -30,7 +30,7 @@
   justify-content: space-between;
 }
 
-.navbarAbsolute {
+.userOptions {
   width: 50%;
   margin: auto;
   margin-top: 0.5rem;
@@ -63,7 +63,7 @@
   font-size: medium;
 }
 
-.displayHidden {
+.userOptionsHidden {
   display: none;
 }
 
