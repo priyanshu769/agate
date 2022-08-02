@@ -11,9 +11,6 @@ export const ProductCard = (props) => {
         alt={props.productName}
       />
       <p className="productName">{props.productName}...</p>
-      <p>
-        <i>Brand Name</i>
-      </p>
       <p className="productPrice">$ {props.productPrice}</p>
       <p className="cardBtnContainer">
         <button
