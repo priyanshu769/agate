@@ -13,11 +13,8 @@ import {
   onlyFastDelivery,
   excludeOutOfStock,
   sortProducts,
-  showToast,
-  hideToast,
 } from '../../Utils'
 import { useNavigate } from 'react-router'
-import { AiOutlineBars } from 'react-icons/ai'
 
 
 export const ProductsPage = () => {
@@ -49,43 +46,38 @@ export const ProductsPage = () => {
     })()
   }, [])
   return (
-    <div>
-      <button
-        className="sortAndFiltersBtn"
-        onClick={() => setShowFilters((showFilters) => !showFilters)}
-      >
-        <AiOutlineBars />
-        Sort/Filters
-      </button>
-      <div
-        style={{ display: showFilters ? 'block' : 'none' }}
-        className="sortAndFilters"
-      >
+    <div className='sidebarAndMain'>
+      <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
+      <div className={showFilters ? "sortAndFiltersMobile" : "sortAndFilters"}>
+        <h5>Filter by Price</h5>
         <input
           onChange={() => appDispatch({ TYPE: 'low_to_high' })}
           checked={app.sortType && app.sortType === 'low_to_high'}
           type="radio"
         />
         <label>Low To High</label>
+        <br />
         <input
           onChange={() => appDispatch({ TYPE: 'high_to_low' })}
           checked={app.sortType && app.sortType === 'high_to_low'}
           type="radio"
         />
         <label>High To Low</label>
+        <br />
         <input
           onChange={() => appDispatch({ TYPE: 'relevance' })}
           checked={app.sortType && app.sortType === 'relevance'}
           type="radio"
         />
         <label>Relevance</label>
-        <br />
+        <h5>Filter by Product</h5>
         <input
           onChange={() => appDispatch({ TYPE: 'set_fastDelivery' })}
           checked={app.fastDelivery}
           type="checkbox"
         />
         <label>Fast Delivery Only</label>
+        <br />
         <input
           onChange={() => appDispatch({ TYPE: 'set_wholeInventory' })}
           checked={app.wholeInventory}
@@ -93,8 +85,9 @@ export const ProductsPage = () => {
         />
         <label>Include Out of Stock</label>
       </div>
+      {products.length === 0 && <Loading />}
       <div className="productsContainer">
-        {products.length === 0 ? <Loading /> : productsToDisplay.map((product) => {
+        {products.length > 0 && productsToDisplay.map((product) => {
           return (
             <ProductCard
               productImg={product.image}
