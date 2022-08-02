@@ -89,13 +89,17 @@ function App() {
               className="navLink"
               activeclassname="selectedNavPill"
               to={auth.loggedInToken ? "" : "/login"}
+              onClick={() => setUserFeat(!userFeat)}
             >
               {auth.loggedInToken ? auth.user?.name : 'Login'}
             </Link>
           </li>
           <li className="userOption">
             <button
-              onClick={() => logoutHandle(auth.loggedInToken, authDispatch, appDispatch)}
+              onClick={() => {
+                logoutHandle(auth.loggedInToken, authDispatch, appDispatch)
+                setUserFeat(!userFeat)
+              }}
               className={auth.loggedInToken ? 'navBtn' : 'userOptionsHidden'}
             >
               Logout
