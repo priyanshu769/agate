@@ -20,7 +20,7 @@ import { FaUserAlt } from 'react-icons/fa'
 
 function App() {
   const { auth, authDispatch } = useAuth()
-  const { appDispatch } = useApp()
+  const { app, appDispatch } = useApp()
   const { toast, toastDispatch } = useToast()
   const [userFeat, setUserFeat] = useState(false)
   useEffect(() => {
@@ -55,15 +55,13 @@ function App() {
         <div className='navBulletsContainer'>
           <ul className="navBullets">
             <li className="navBullet">
-
-            </li>
-            <li className="navBullet">
               <Link
                 className="navLink"
                 activeclassname="selectedNavPill"
                 to="/wishlist"
               >
                 <BsFillHeartFill size={25} />
+                <span classname="navIconBadge">{auth.user?.wishlist.length}</span>
               </Link>
             </li>
             <li className="navBullet">
@@ -73,6 +71,7 @@ function App() {
                 to="/cart"
               >
                 <BsCart3 size={25} />
+                <span classname="navIconBadge">{app.cart?.length}</span>
               </Link>
             </li>
             <li className="navBullet">
