@@ -31,7 +31,7 @@ export const loginHandler = async (
         })
         loadCart(loginResponse.data.token, appDispatch)
         navigate('/')
-        showToast(toastDispatch, "Logging In")
+        showToast(toastDispatch, "Logged In")
         setLoader(false)
       } else {
         showToast(toastDispatch, "Unable to login, check credentials.")
@@ -64,6 +64,7 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
         )
         authDispatch({ TYPE: 'set_loggedInToken', PAYLOAD: signupResponse.data.token })
         authDispatch({ TYPE: 'set_user', PAYLOAD: signupResponse.data.user })
+        showToast(toastDispatch, "Account Created")
         setLoader(false)
       } else {
         showToast(toastDispatch, signupResponse.data.message)}
