@@ -24,7 +24,7 @@ export const loginHandler = async (
             'loggedInAgate',
             JSON.stringify({ token: loginResponse.data.token }),
         )
-        authDispatch({ TYPE: 'set_user', PAYLOAD: loginResponse.data.user })
+        loadUser(loginResponse.data.token, authDispatch)
         authDispatch({
           TYPE: 'set_loggedInToken',
           PAYLOAD: loginResponse.data.token,
@@ -63,7 +63,7 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
           JSON.stringify({ token: signupResponse.data.token }),
         )
         authDispatch({ TYPE: 'set_loggedInToken', PAYLOAD: signupResponse.data.token })
-        authDispatch({ TYPE: 'set_user', PAYLOAD: signupResponse.data.user })
+        loadUser(signupResponse.data.token, authDispatch)
         showToast(toastDispatch, "Account Created")
         setLoader(false)
       } else {
