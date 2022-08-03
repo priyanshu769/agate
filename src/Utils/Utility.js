@@ -30,7 +30,7 @@ export const loginHandler = async (
           PAYLOAD: loginResponse.data.token,
         })
         loadCart(loginResponse.data.token, appDispatch)
-        navigate('/')
+        navigate('/products')
         showToast(toastDispatch, "Logged In")
         setLoader(false)
       } else {

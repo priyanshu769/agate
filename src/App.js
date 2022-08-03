@@ -1,5 +1,5 @@
 import './App.css'
-import { ProductsPage, Cart, Wishlist, Login, Signup, Checkout } from './Pages'
+import { ProductsPage, Cart, Wishlist, Login, Signup, Checkout, LandingPage } from './Pages'
 import { Routes, Route, Link } from 'react-router-dom'
 import {
   PrivateRoute,
@@ -109,7 +109,8 @@ function App() {
       </div>
       {toast.showToast && <Toast toastMessage={toast.toastMessage} />}
       <Routes>
-        <Route exact path="/" element={<ProductsPage />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/products" element={<ProductsPage />} />
         <Route exact path="/wishlist" element={<PrivateRoute />}>
           <Route exact path="/wishlist" element={<Wishlist />} />
         </Route>

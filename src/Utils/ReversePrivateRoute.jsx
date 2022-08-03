@@ -6,6 +6,6 @@ export const ReversePrivateRoute = () => {
   return !auth.loggedInToken ? (
     <Outlet />
   ) : (
-    <Navigate to='/' />
+    <Navigate to='/products' />
   )
 }
