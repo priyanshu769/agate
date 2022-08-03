@@ -1,14 +1,17 @@
 .productCard {
     width: 15rem;
     margin: 0.5rem;
-    box-shadow: 3px 2px 1px var(--off-grey);
-    border: 1px solid var(--off-white);
     padding: 0.5rem;
+    border: 1px solid var(--off-white);
+    border-radius: 0.5rem;
+    box-shadow: 2px 3px var(--off-white);
 }
 
 .productImg {
+    display: block;
     max-width: 100%;
     max-height: 10rem;
+    margin: auto;
 }
 
 .productName {
