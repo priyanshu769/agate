@@ -69,7 +69,6 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
         showToast(toastDispatch, signupResponse.data.message)}
         setLoader(false)
       } else {
-        console.log('User already logged in.')
         showToast(toastDispatch, "Already logged in")
         setLoader(false)
     }
@@ -123,7 +122,7 @@ export const addTocartHandle = async (
       if (addToCartResponse.data.success) {
         loadCart(userToken, appDispatch)
         showToast(toastDispatch, "Product added to Cart")
-      } else console.log('Unable to add to Cart.')
+      } else showToast(toastDispatch, "Unable to add product to Cart")
     } else navigate('/login')
   } catch (error) {
     console.log('Unable to add to Cart', error)
@@ -173,7 +172,7 @@ export const addToWishlistHandle = async (
       if (addToWishlistResposne.data.success) {
         loadUser(userToken, authDispatch)
         showToast(toastDispatch, "Wishlist Updated")
-      } else console.log('Unable to add product to wishlist.')
+      } else showToast(toastDispatch, "Unable to add product to wishlist.")
     } catch (error) {
       console.log(
         'Something went worng while adding product to wishlist.',
