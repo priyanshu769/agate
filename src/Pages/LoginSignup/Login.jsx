@@ -65,7 +65,7 @@ export const Login = () => {
         {loader ? <LoadingSmall /> : "Login"}
       </button>
       <button className="loginSignupBtn" onClick={() => guestLogIn()}>
-        Guest Credentials
+        Fill Guest Credentials
       </button>
       <p>
         Not a user, <Link className='loginSignupLink' to="/signup">Signup</Link>.
