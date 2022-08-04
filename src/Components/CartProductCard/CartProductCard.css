@@ -24,7 +24,17 @@
     padding: 0 1rem;
 }
 
+.cardQuantity {
+    border: 1px solid var(--primary-dark);
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 20px;
+    font-weight: 900;
+}
+
 .removeBtn {
+    font-family: 'Poppins' sans-serif;
     cursor: pointer;
     border: 2px solid var(--off-grey);
     border-radius: 0.5rem;
@@ -40,10 +50,12 @@
 }
 
 .btnPlusMinus {
+    font-family: 'Poppins' sans-serif;
     cursor: pointer;
     border: none;
     background: none;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .btnPlusMinus:hover {

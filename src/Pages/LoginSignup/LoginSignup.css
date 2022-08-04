@@ -16,6 +16,7 @@
 }
 
 .loginSignupBtn {
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
     width: 70%;
     padding: 0.5rem 0;
@@ -29,6 +30,10 @@
     text-decoration: none;
     color: var(--primary-color);
     font-weight: 600;
+}
+
+.showPasswordChecker {
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 480px) {

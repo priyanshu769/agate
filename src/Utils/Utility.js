@@ -18,7 +18,6 @@ export const loginHandler = async (
         'https://api-agate.herokuapp.com/login',
         { email: email, password: password },
         )
-        console.log(loginResponse.data)
         if (loginResponse.data.success) {
           localStorage.setItem(
             'loggedInAgate',
@@ -304,7 +303,7 @@ export const decrementHandler = async (
 // Checkout
 
 export const checkoutHandler = () => {
-  console.log("checkout btn clicked")
+  return true
 }
 
 // Toast

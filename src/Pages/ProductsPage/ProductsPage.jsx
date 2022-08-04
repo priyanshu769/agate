@@ -50,40 +50,45 @@ export const ProductsPage = () => {
       <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
       <div className={showFilters ? "sortAndFiltersMobile" : "sortAndFilters"}>
         <h5>Filter by Price</h5>
-        <input
-          onChange={() => appDispatch({ TYPE: 'low_to_high' })}
-          checked={app.sortType && app.sortType === 'low_to_high'}
-          type="radio"
-        />
-        <label>Low To High</label>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'low_to_high' })}
+            checked={app.sortType && app.sortType === 'low_to_high'}
+            type="radio"
+          />
+          Low To High</label>
         <br />
-        <input
-          onChange={() => appDispatch({ TYPE: 'high_to_low' })}
-          checked={app.sortType && app.sortType === 'high_to_low'}
-          type="radio"
-        />
-        <label>High To Low</label>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'high_to_low' })}
+            checked={app.sortType && app.sortType === 'high_to_low'}
+            type="radio"
+          />
+          High To Low</label>
         <br />
-        <input
-          onChange={() => appDispatch({ TYPE: 'relevance' })}
-          checked={app.sortType && app.sortType === 'relevance'}
-          type="radio"
-        />
-        <label>Relevance</label>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'relevance' })}
+            checked={app.sortType && app.sortType === 'relevance'}
+            type="radio"
+          />
+          Relevance</label>
         <h5>Filter by Product</h5>
-        <input
-          onChange={() => appDispatch({ TYPE: 'set_fastDelivery' })}
-          checked={app.fastDelivery}
-          type="checkbox"
-        />
-        <label>Fast Delivery Only</label>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_fastDelivery' })}
+            checked={app.fastDelivery}
+            type="checkbox"
+          />
+          Fast Delivery Only</label>
         <br />
-        <input
-          onChange={() => appDispatch({ TYPE: 'set_wholeInventory' })}
-          checked={app.wholeInventory}
-          type="checkbox"
-        />
-        <label>Include Out of Stock</label>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_wholeInventory' })}
+            checked={app.wholeInventory}
+            type="checkbox"
+          />
+          Include Out of Stock</label>
       </div>
       {products.length === 0 && <Loading />}
       <div className="productsContainer">

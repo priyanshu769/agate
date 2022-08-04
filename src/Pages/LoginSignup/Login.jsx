@@ -30,7 +30,7 @@ export const Login = () => {
         setLoader,
         navigate
       )
-    } else {showToast(toastDispatch, "Please add a valid email")}
+    } else { showToast(toastDispatch, "Please add a valid email") }
   }
 
   const guestLogIn = () => {
@@ -56,11 +56,12 @@ export const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <br />
-      <input 
-      onChange={()=> setShowPass(showPass => !showPass)}
-      checked={showPass}
-      type='checkbox' />
-      <label>Show Password</label>
+      <label className='showPasswordChecker'>
+        <input
+          onChange={() => setShowPass(showPass => !showPass)}
+          checked={showPass}
+          type='checkbox' />
+        Show Password</label>
       <button className="loginSignupBtn" onClick={() => loggingIn()}>
         {loader ? <LoadingSmall /> : "Login"}
       </button>

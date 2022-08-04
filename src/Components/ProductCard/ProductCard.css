@@ -30,6 +30,7 @@
 }
 
 .addToCartBtn {
+    font-family: 'Poppins' sans-serif;
     cursor: pointer;
     width: 80%;
     padding: 0.5rem 0;
@@ -45,6 +46,7 @@
 }
 
 .addToWishlistBtn {
+    font-family: 'Poppins' sans-serif;
     cursor: pointer;
     padding: 0.5rem;
     border: none;

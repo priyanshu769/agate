@@ -27,6 +27,7 @@ export const Cart = () => {
       <h2 className="cartHeading">Your Cart:</h2>
       <div className="cartProductsAndDetails">
         <div className="cartProductsContainer">
+          {app.cart.length === 0 && <h3>Add products to cart.</h3>}
           {app.cart?.map((cartItem) => {
             return (
               <CartProductCard
@@ -65,7 +66,7 @@ export const Cart = () => {
             )
           })}
         </div>
-        <div className="cartDetails">
+        <div style={{ display: app.cart.length > 0 ? 'block' : 'none' }} className="cartDetails">
           <h3>Order Summary:</h3>
           <p>Total Quantity: {totalNumberOfItems}</p>
           <p>Total: $ {cartTotal}</p>

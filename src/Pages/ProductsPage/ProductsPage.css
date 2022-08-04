@@ -9,7 +9,13 @@
     flex-wrap: wrap;
     margin-left: 3rem;
 }
+
+.sortFilterAction {
+    cursor: pointer;
+}
+
 .sortAndFiltersBtn {
+    font-family: 'Poppins' sans-serif;
     display: none;
 }
 

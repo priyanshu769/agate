@@ -72,11 +72,12 @@ export const Signup = () => {
         type={showPass ? 'text' : 'password'}
       />
       <br />
-      <input
-        onChange={() => setShowPass(showPass => !showPass)}
-        checked={showPass}
-        type='checkbox' />
-      <label>Show Password</label>
+      <label  className='showPasswordChecker'>
+        <input
+          onChange={() => setShowPass(showPass => !showPass)}
+          checked={showPass}
+          type='checkbox' />
+        Show Password</label>
       <button onClick={() => signup()} className="loginSignupBtn">
         {loader ? <LoadingSmall /> : "Signup"}
       </button>
