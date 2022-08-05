@@ -38,7 +38,7 @@ export const Wishlist = () => {
                 navigate,
               )
             }
-            productCardBtnText={addToCarBtnStyle(wishedItem._id, app.cart)}
+            productCardBtnText={addToCarBtnStyle(wishedItem._id, wishedItem.stock, app.cart)}
             wishListBtnStyle={true}
           />
         )
