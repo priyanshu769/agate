@@ -1,13 +1,12 @@
 import React from 'react'
 import './Cart.css'
 import { CartProductCard } from '../../Components'
-import { wishListBtnStyle, removeFromCartHandle, addToWishlistHandle, incrementHandler, decrementHandler, checkoutHandler } from '../../Utils'
+import { wishListBtnStyle, removeFromCartHandle, addToWishlistHandle, incrementHandler, decrementHandler, showToast, emptyCart } from '../../Utils'
 import { useAuth } from '../../Context/AuthContext'
 import { useApp } from '../../Context/AppContext'
 import { useToast } from '../../Context/ToastContext'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 
 export const Cart = () => {
   const { auth, authDispatch } = useAuth()
@@ -21,6 +20,26 @@ export const Cart = () => {
   const cartTotal = cartPrices.reduce((curr, acc) => curr + acc, 0)
 
   const totalNumberOfItems = app.cart.map((item) => parseInt(item.quantity)).reduce((curr, acc) => curr + acc, 0)
+
+  const cartProducts = app.cart?.map(product => {
+    return { orderedProduct: product._id, quantity: product.quantity }
+  })
+
+  console.log(cartProducts, 'cartproducts for order')
+
+  const checkoutHandle = async (products, userToken, appDispatch, toastDispatch) => {
+    showToast(toastDispatch, 'Placing Order')
+    try {
+      const checkoutRes = await axios.post('https://api-agate.herokuapp.com/orders', { orderedProducts: products }, { headers: { Authorization: userToken } },)
+      console.log(checkoutRes)
+      if (checkoutRes.data.success) {
+        emptyCart(userToken, appDispatch, toastDispatch)
+        navigate('/checkout')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div>
@@ -73,9 +92,9 @@ export const Cart = () => {
           <p>
             <i>Delivery expected in 6 to 7 days.</i>
           </p>
-          <Link to="/checkout">
-            <button onClick={checkoutHandler} className="paymentBtn">Checkout</button>
-          </Link>
+          <button onClick={
+            () => checkoutHandle(cartProducts, auth.loggedInToken, appDispatch, toastDispatch)
+          } className="paymentBtn">Checkout</button>
         </div>
       </div>
     </div>

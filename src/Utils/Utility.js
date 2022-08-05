@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const loginHandler = async (
   loggedInToken,
@@ -17,11 +17,11 @@ export const loginHandler = async (
       const loginResponse = await axios.post(
         'https://api-agate.herokuapp.com/login',
         { email: email, password: password },
-        )
-        if (loginResponse.data.success) {
-          localStorage.setItem(
-            'loggedInAgate',
-            JSON.stringify({ token: loginResponse.data.token }),
+      )
+      if (loginResponse.data.success) {
+        localStorage.setItem(
+          'loggedInAgate',
+          JSON.stringify({ token: loginResponse.data.token }),
         )
         loadUser(loginResponse.data.token, authDispatch)
         authDispatch({
@@ -66,11 +66,12 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
         showToast(toastDispatch, "Account Created")
         setLoader(false)
       } else {
-        showToast(toastDispatch, signupResponse.data.message)}
-        setLoader(false)
-      } else {
-        showToast(toastDispatch, "Already logged in")
-        setLoader(false)
+        showToast(toastDispatch, signupResponse.data.message)
+      }
+      setLoader(false)
+    } else {
+      showToast(toastDispatch, "Already logged in")
+      setLoader(false)
     }
   } catch (error) {
     console.log('Something went wrong', error)
@@ -279,7 +280,6 @@ export const decrementHandler = async (
   userToken,
   appDispatch,
   toastDispatch,
-  navigate,
 ) => {
   if (userToken) {
     showToast(toastDispatch, "Changing Quantity")
@@ -299,10 +299,23 @@ export const decrementHandler = async (
   }
 }
 
-// Checkout
+// Empty Cart
 
-export const checkoutHandler = () => {
-  return true
+export const emptyCart = async (userToken, appDispatch, toastDispatch) => {
+  try {
+    const { data } = await axios.post(
+      `https://api-agate.herokuapp.com/cart/emptyCart`,
+      {},
+      { headers: { Authorization: userToken } },
+    )
+    if (data.success) {
+      console.log(data, 'empty cart')
+      loadCart(userToken, appDispatch)
+      showToast(toastDispatch, "OrderPlaced")
+    }
+  } catch (error) {
+    console.log(error, 'Unable to empty Cart')
+  }
 }
 
 // Toast

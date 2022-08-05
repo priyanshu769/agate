@@ -1,0 +1,34 @@
+.orderCard {
+    border: 1px solid var(--off-white);
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 2px var(--off-white);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 1rem;
+    width: 95%;
+}
+
+.orderInfo {
+    padding: 0.2rem;
+}
+
+.orderId {
+    background-color: var(--off-white);
+}
+
+.orderIdTag {
+    font-size: 12px;
+}
+
+.totalProducts {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.totalQuantity {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tag {
+    font-weight: 100;
+}

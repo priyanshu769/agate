@@ -17,9 +17,9 @@ export {
   sortProducts,
   incrementHandler,
   decrementHandler,
-  checkoutHandler,
   showToast,
-  hideToast
+  hideToast,
+  emptyCart
 } from './Utility'
 export { PrivateRoute } from './PrivateRoute.jsx'
 export { ReversePrivateRoute } from './ReversePrivateRoute.jsx'

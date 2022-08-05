@@ -1,5 +1,5 @@
 import './App.css'
-import { ProductsPage, Cart, Wishlist, Login, Signup, Checkout, LandingPage } from './Pages'
+import { ProductsPage, Cart, Wishlist, Login, Signup, Checkout, LandingPage, Orders } from './Pages'
 import { Routes, Route, Link } from 'react-router-dom'
 import {
   PrivateRoute,
@@ -119,6 +119,9 @@ function App() {
         </Route>
         <Route exact path="/checkout" element={<PrivateRoute />}>
           <Route exact path="/checkout" element={<Checkout />} />
+        </Route>
+        <Route exact path="/orders" element={<PrivateRoute />}>
+          <Route exact path="/orders" element={<Orders />} />
         </Route>
         <Route exact path="/login" element={<ReversePrivateRoute />}>
           <Route exact path="/login" element={<Login />} />
