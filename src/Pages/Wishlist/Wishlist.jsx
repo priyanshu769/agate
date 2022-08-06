@@ -18,7 +18,7 @@ export const Wishlist = () => {
         return (
           <ProductCard
             productImg={wishedItem.image}
-            productName={wishedItem.name}
+            productName={wishedItem.name.slice(0, 17)}
             productPrice={wishedItem.price}
             addToCartHandle={() =>
               addTocartHandle(

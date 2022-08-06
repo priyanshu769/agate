@@ -66,7 +66,7 @@ export const ProductsPage = () => {
   return (
     <div className='sidebarAndMain'>
       <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
-      <div className={showFilters ? "sortAndFiltersMobile" : "sortAndFilters"}>
+      <div className={showFilters ? "sidebarMobile" : "sidebar"}>
         <h5>Sort by Price</h5>
         <label className='sortFilterAction'>
           <input

@@ -2,7 +2,7 @@
     border: 2px solid var(--off-white);
     border-radius: 0.5rem;
     box-shadow: 2px 3px var(--off-white);
-    position: absolute;
+    position: fixed;
     left: 10rem;
     text-align: center;
     background-color: var(--white);
@@ -24,7 +24,7 @@
   @media only screen and (max-width: 480px) {
     .toastBox {
         width: 18rem;
-        position: absolute;
+        position: fixed;
         left: 2rem;
     }
 }

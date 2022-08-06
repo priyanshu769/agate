@@ -19,12 +19,13 @@
     display: none;
 }
 
-.sortAndFilters {
-    width: 35rem;
+.sidebar {
+    min-width: 15rem;
+    max-width: 15rem;
     box-shadow: 3px 0 var(--off-white);
 }
 
-.sortAndFiltersMobile {
+.sidebarMobile {
     display: none;
 }
 
@@ -64,7 +65,7 @@
         cursor: pointer;
     }
 
-    .sortAndFiltersMobile {
+    .sidebarMobile {
         display: block;
         position: absolute;
         width: 95%;
@@ -73,7 +74,7 @@
         box-shadow: 3px 3px 2px var(--off-white);
     }
 
-    .sortAndFilters {
+    .sidebar {
         display: none;
     }
 
