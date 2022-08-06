@@ -17,6 +17,7 @@ export {
   sortProducts,
   sortByRating,
   filterByRating,
+  filterByCategory,
   incrementHandler,
   decrementHandler,
   showToast,

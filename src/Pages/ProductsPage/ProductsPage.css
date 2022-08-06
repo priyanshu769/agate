@@ -28,12 +28,35 @@
     display: none;
 }
 
+.categoryBtn {
+    font-family: 'Poppins' sans-serif;
+    cursor: pointer;
+    width: fit-content;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    border: 1px solid var(--off-white);
+    background-color: var(--primary-color);
+}
+
+.activeCategoryBtn {
+    font-family: 'Poppins' sans-serif;
+    cursor: pointer;
+    width: fit-content;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    border: 1px solid var(--off-white);
+    background-color: var(--primary-dark);
+}
 
 @media only screen and (max-width: 480px) {
     .sidebarAndMain {
         display: block;
     }
-    
+
     .sortAndFiltersBtn {
         display: block;
         background: none;

@@ -245,6 +245,14 @@ export const filterByRating = (productsList, rating) => {
   } else return productsList
 }
 
+export const filterByCategory = (productsList, category) => {
+  if (category === 'All') {
+    return productsList
+  } else {
+    return productsList.filter(product => product.category === category)
+  }
+}
+
 // Buttons
 
 export const wishListBtnStyle = (productId, user) => {

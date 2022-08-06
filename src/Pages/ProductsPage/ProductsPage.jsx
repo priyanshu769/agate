@@ -14,7 +14,8 @@ import {
   excludeOutOfStock,
   sortProducts,
   sortByRating,
-  filterByRating
+  filterByRating,
+  filterByCategory
 } from '../../Utils'
 import { useNavigate } from 'react-router'
 
@@ -22,18 +23,21 @@ import { useNavigate } from 'react-router'
 export const ProductsPage = () => {
   const [products, setProducts] = useState([])
   const [showFilters, setShowFilters] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [categories, setCategories] = useState(['All'])
   const { auth, authDispatch } = useAuth()
   const { app, appDispatch } = useApp()
   const { toastDispatch } = useToast()
   const navigate = useNavigate()
+
   const productsToDisplay = sortByRating(sortProducts(
     onlyFastDelivery(
-      excludeOutOfStock(filterByRating(products, app.rating), app.wholeInventory),
+      excludeOutOfStock(filterByRating(filterByCategory(products, activeCategory), app.rating), app.wholeInventory),
       app.fastDelivery,
     ),
     app.sortType,
   ), app.sortTypeRating)
-  console.log(productsToDisplay)
+
   useEffect(() => {
     ; (async () => {
       try {
@@ -48,6 +52,17 @@ export const ProductsPage = () => {
       }
     })()
   }, [])
+
+  useEffect(() => {
+    if (products.length > 0) {
+      products.forEach(product => {
+        if (!categories.includes(product.category)) {
+          setCategories([...categories, product.category])
+        }
+      })
+    }
+  }, [products, categories])
+
   return (
     <div className='sidebarAndMain'>
       <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
@@ -149,6 +164,10 @@ export const ProductsPage = () => {
             type="checkbox"
           />
           Include Out of Stock</label>
+        <h5>Categories</h5>
+        {categories.map(category => {
+          return (<button className={activeCategory === category ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => { setActiveCategory(category) }}>{category}</button>)
+        })}
       </div>
       {products.length === 0 && <Loading />}
       <div className="productsContainer">
