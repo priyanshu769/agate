@@ -13,7 +13,8 @@ import {
   onlyFastDelivery,
   excludeOutOfStock,
   sortProducts,
-  sortByRating
+  sortByRating,
+  filterByRating
 } from '../../Utils'
 import { useNavigate } from 'react-router'
 
@@ -27,11 +28,12 @@ export const ProductsPage = () => {
   const navigate = useNavigate()
   const productsToDisplay = sortByRating(sortProducts(
     onlyFastDelivery(
-      excludeOutOfStock(products, app.wholeInventory),
+      excludeOutOfStock(filterByRating(products, app.rating), app.wholeInventory),
       app.fastDelivery,
     ),
     app.sortType,
   ), app.sortTypeRating)
+  console.log(productsToDisplay)
   useEffect(() => {
     ; (async () => {
       try {
@@ -98,6 +100,39 @@ export const ProductsPage = () => {
             type="radio"
           />
           Relevance</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_rating', PAYLOAD: 4 })}
+            checked={app.rating === 4}
+            type="checkbox"
+          />
+          4 and above</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_rating', PAYLOAD: 3 })}
+            checked={app.rating === 3}
+            type="checkbox"
+          />
+          3 and above</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_rating', PAYLOAD: 2 })}
+            checked={app.rating === 2}
+            type="checkbox"
+          />
+          2 and above</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'set_rating', PAYLOAD: 1 })}
+            checked={app.rating === 1}
+            type="checkbox"
+          />
+          1 and above</label>
+        <br />
         <h5>Filter by Product</h5>
         <label className='sortFilterAction'>
           <input

@@ -238,6 +238,13 @@ export const sortByRating = (productsList, ratingType) => {
   }
 }
 
+export const filterByRating = (productsList, rating) => {
+  if (rating) {
+    const rateFilteredProducts = productsList.filter(product => product.ratings >= rating)
+    return rateFilteredProducts
+  } else return productsList
+}
+
 // Buttons
 
 export const wishListBtnStyle = (productId, user) => {

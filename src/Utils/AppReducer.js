@@ -4,6 +4,7 @@ export const InitialApp = {
   wholeInventory: true,
   sortType: 'relevance',
   sortTypeRating: "relevance_rating",
+  rating: 1,
 }
 
 export const AppReducer = (state, action) => {
@@ -26,6 +27,8 @@ export const AppReducer = (state, action) => {
         return {...state, sortTypeRating: action.TYPE}
         case 'relevance_rating':
         return {...state, sortTypeRating: action.TYPE}
+        case 'set_rating':
+        return {...state, rating: action.PAYLOAD}
     default:
       break
   }

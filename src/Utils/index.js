@@ -16,6 +16,7 @@ export {
   excludeOutOfStock,
   sortProducts,
   sortByRating,
+  filterByRating,
   incrementHandler,
   decrementHandler,
   showToast,
