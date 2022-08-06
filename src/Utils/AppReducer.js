@@ -3,6 +3,7 @@ export const InitialApp = {
   fastDelivery: false,
   wholeInventory: true,
   sortType: 'relevance',
+  sortTypeRating: "relevance_rating",
 }
 
 export const AppReducer = (state, action) => {
@@ -19,6 +20,12 @@ export const AppReducer = (state, action) => {
         return {...state, sortType: action.TYPE}
         case 'relevance':
         return {...state, sortType: action.TYPE}
+        case 'high_to_low_rating':
+        return {...state, sortTypeRating: action.TYPE}
+        case 'low_to_high_rating':
+        return {...state, sortTypeRating: action.TYPE}
+        case 'relevance_rating':
+        return {...state, sortTypeRating: action.TYPE}
     default:
       break
   }

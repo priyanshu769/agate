@@ -15,6 +15,7 @@ export {
   onlyFastDelivery,
   excludeOutOfStock,
   sortProducts,
+  sortByRating,
   incrementHandler,
   decrementHandler,
   showToast,

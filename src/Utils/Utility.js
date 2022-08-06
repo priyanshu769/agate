@@ -226,6 +226,18 @@ export const sortProducts = (productsList, sortType) => {
   }
 }
 
+export const sortByRating = (productsList, ratingType) => {
+  if (ratingType === "low_to_high_rating") {
+    const lowToHighProducts = productsList.sort((productA, productB) => productA['ratings'] - productB['ratings'])
+    return lowToHighProducts
+  } else if (ratingType === "high_to_low_rating") {
+    const highToLowProducts = productsList.sort((productA, productB) => productB['ratings'] - productA['ratings'])
+    return highToLowProducts
+  } else if (ratingType === "relevance_rating") {
+    return productsList
+  }
+}
+
 // Buttons
 
 export const wishListBtnStyle = (productId, user) => {

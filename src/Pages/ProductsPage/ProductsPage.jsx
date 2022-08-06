@@ -13,6 +13,7 @@ import {
   onlyFastDelivery,
   excludeOutOfStock,
   sortProducts,
+  sortByRating
 } from '../../Utils'
 import { useNavigate } from 'react-router'
 
@@ -24,13 +25,13 @@ export const ProductsPage = () => {
   const { app, appDispatch } = useApp()
   const { toastDispatch } = useToast()
   const navigate = useNavigate()
-  const productsToDisplay = sortProducts(
+  const productsToDisplay = sortByRating(sortProducts(
     onlyFastDelivery(
       excludeOutOfStock(products, app.wholeInventory),
       app.fastDelivery,
     ),
     app.sortType,
-  )
+  ), app.sortTypeRating)
   useEffect(() => {
     ; (async () => {
       try {
@@ -49,7 +50,7 @@ export const ProductsPage = () => {
     <div className='sidebarAndMain'>
       <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
       <div className={showFilters ? "sortAndFiltersMobile" : "sortAndFilters"}>
-        <h5>Filter by Price</h5>
+        <h5>Sort by Price</h5>
         <label className='sortFilterAction'>
           <input
             onChange={() => appDispatch({ TYPE: 'low_to_high' })}
@@ -70,6 +71,30 @@ export const ProductsPage = () => {
           <input
             onChange={() => appDispatch({ TYPE: 'relevance' })}
             checked={app.sortType && app.sortType === 'relevance'}
+            type="radio"
+          />
+          Relevance</label>
+        <h5>Sort by Rating</h5>
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'low_to_high_rating' })}
+            checked={app.sortTypeRating && app.sortTypeRating === 'low_to_high_rating'}
+            type="radio"
+          />
+          Low To High</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'high_to_low_rating' })}
+            checked={app.sortTypeRating && app.sortTypeRating === 'high_to_low_rating'}
+            type="radio"
+          />
+          High To Low</label>
+        <br />
+        <label className='sortFilterAction'>
+          <input
+            onChange={() => appDispatch({ TYPE: 'relevance_rating' })}
+            checked={app.sortTypeRating && app.sortTypeRating === 'relevance_rating'}
             type="radio"
           />
           Relevance</label>
