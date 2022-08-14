@@ -1,10 +1,20 @@
-# An E-Commerce App
+# Agate ✨
+## _An e-commerce web app_ 🛒
 
-An e-commerce web app built on MERN stack.
+## Description
+An e-commerce for bike gears.
 
-You need to signup to use the web app and if you don't want to signup then you can use this account to play.
+## Demo
+Have a guest Credentials button on login page.
 
-Email: `random@gmail.com`
-Password: `random`
+## Features
+- Add Products To Cart.
+- Manage quantity of cart items.
+- Checkout Order.
+- Orders Page.
+- Multiple Sort and Filter features. 
+- Add products to wishlist.
+- Wishlist Page
+- User Management (Login/Signup)
 
-PS: If you see a sudden switch in the commit to Agate 2.0 and you want to see how changes were made, head to [this repo](https://github.com/priyanshu769/agate-2.0/tree/development).
+## 🌐 MERN Stack
