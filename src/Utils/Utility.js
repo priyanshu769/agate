@@ -148,7 +148,7 @@ export const removeFromCartHandle = async (
       if (removeFromCartResponse.data.success) {
         loadCart(userToken, appDispatch)
         showToast(toastDispatch, "Product removed from Cart")
-      }
+      } else showToast(toastDispatch, "Unable to Remove Product from Cart")
     } else navigate('/login')
   } catch (error) {
     console.log('Some Error Occured', error)
