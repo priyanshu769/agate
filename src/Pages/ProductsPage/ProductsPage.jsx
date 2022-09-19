@@ -69,7 +69,7 @@ export const ProductsPage = () => {
       <div className={showFilters ? "sidebarMobile" : "sidebar"}>
         <h4>Sort by Price</h4>
         <button className={app.sortType && app.sortType === 'low_to_high' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'low_to_high' })}>Low To High</button>
-        <button className={app.sortType && app.sortType === 'high_to_low' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'high_to_low' })}>Low To High</button>
+        <button className={app.sortType && app.sortType === 'high_to_low' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'high_to_low' })}>High To Low</button>
         <button className={app.sortType && app.sortType === 'relevance' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'relevance' })}>Relevance</button>
         <h4>Sort by Rating</h4>
         <button className={app.sortTypeRating && app.sortTypeRating === 'low_to_high_rating' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'low_to_high_rating' })}>Low To High</button>
