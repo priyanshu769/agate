@@ -67,54 +67,14 @@ export const ProductsPage = () => {
     <div className='sidebarAndMain'>
       <button className='sortAndFiltersBtn' onClick={() => setShowFilters(showFilters => !showFilters)}>Sort n Filters</button>
       <div className={showFilters ? "sidebarMobile" : "sidebar"}>
-        <h5>Sort by Price</h5>
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'low_to_high' })}
-            checked={app.sortType && app.sortType === 'low_to_high'}
-            type="radio"
-          />
-          Low To High</label>
-        <br />
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'high_to_low' })}
-            checked={app.sortType && app.sortType === 'high_to_low'}
-            type="radio"
-          />
-          High To Low</label>
-        <br />
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'relevance' })}
-            checked={app.sortType && app.sortType === 'relevance'}
-            type="radio"
-          />
-          Relevance</label>
-        <h5>Sort by Rating</h5>
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'low_to_high_rating' })}
-            checked={app.sortTypeRating && app.sortTypeRating === 'low_to_high_rating'}
-            type="radio"
-          />
-          Low To High</label>
-        <br />
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'high_to_low_rating' })}
-            checked={app.sortTypeRating && app.sortTypeRating === 'high_to_low_rating'}
-            type="radio"
-          />
-          High To Low</label>
-        <br />
-        <label className='sortFilterAction'>
-          <input
-            onChange={() => appDispatch({ TYPE: 'relevance_rating' })}
-            checked={app.sortTypeRating && app.sortTypeRating === 'relevance_rating'}
-            type="radio"
-          />
-          Relevance</label>
+        <h4>Sort by Price</h4>
+        <button className={app.sortType && app.sortType === 'low_to_high' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'low_to_high' })}>Low To High</button>
+        <button className={app.sortType && app.sortType === 'high_to_low' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'high_to_low' })}>Low To High</button>
+        <button className={app.sortType && app.sortType === 'relevance' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'relevance' })}>Relevance</button>
+        <h4>Sort by Rating</h4>
+        <button className={app.sortTypeRating && app.sortTypeRating === 'low_to_high_rating' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'low_to_high_rating' })}>Low To High</button>
+        <button className={app.sortTypeRating && app.sortTypeRating === 'high_to_low_rating' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'high_to_low_rating' })}>High To Low</button>
+        <button className={app.sortTypeRating && app.sortTypeRating === 'relevance_rating' ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => appDispatch({ TYPE: 'relevance_rating' })}>Relevance</button>
         <br />
         <label className='sortFilterAction'>
           <input
@@ -147,8 +107,7 @@ export const ProductsPage = () => {
             type="checkbox"
           />
           1 and above</label>
-        <br />
-        <h5>Filter by Product</h5>
+        <h4>Filter by Product</h4>
         <label className='sortFilterAction'>
           <input
             onChange={() => appDispatch({ TYPE: 'set_fastDelivery' })}
@@ -164,7 +123,7 @@ export const ProductsPage = () => {
             type="checkbox"
           />
           Include Out of Stock</label>
-        <h5>Categories</h5>
+        <h4>Categories</h4>
         {categories.map(category => {
           return (<button className={activeCategory === category ? 'activeCategoryBtn' : 'categoryBtn'} onClick={() => { setActiveCategory(category) }}>{category}</button>)
         })}
