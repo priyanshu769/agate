@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './LoginSignup.css'
 import { Link } from 'react-router-dom'
 import { showToast, signupHandle } from '../../Utils'
@@ -13,9 +13,13 @@ export const Signup = () => {
   const [rePassword, setRePassword] = useState('')
   const [showPass, setShowPass] = useState(false)
   const [loader, setLoader] = useState(false)
+  const nameRef = useRef()
   const { auth, authDispatch } = useAuth()
   const { toastDispatch } = useToast()
 
+  useEffect(() => {
+    nameRef.current.focus()
+  }, [])
 
   const signup = () => {
     if (email.includes('@')) {
@@ -44,6 +48,7 @@ export const Signup = () => {
     <div className="loginSignupBox">
       <h2>Sign Up</h2>
       <input
+        ref={nameRef}
         value={name}
         onChange={(e) => setName(e.target.value)}
         className="inputBox"
@@ -72,7 +77,7 @@ export const Signup = () => {
         type={showPass ? 'text' : 'password'}
       />
       <br />
-      <label  className='showPasswordChecker'>
+      <label className='showPasswordChecker'>
         <input
           onChange={() => setShowPass(showPass => !showPass)}
           checked={showPass}

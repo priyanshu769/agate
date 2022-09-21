@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './LoginSignup.css'
 import { Link } from 'react-router-dom'
 import { loginHandler, showToast } from '../../Utils'
@@ -16,7 +16,12 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [showPass, setShowPass] = useState(false)
   const [loader, setLoader] = useState(false)
+  const emailRef = useRef()
   const navigate = useNavigate()
+
+  useEffect(()=> {
+    emailRef.current.focus()
+  }, [])
 
   const loggingIn = () => {
     if (email.includes('@')) {
@@ -46,6 +51,7 @@ export const Login = () => {
         placeholder="Email"
         type="email"
         value={email}
+        ref={emailRef}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
