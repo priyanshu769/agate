@@ -1,6 +1,6 @@
 import './App.css'
 import { ProductsPage, Cart, Wishlist, Login, Signup, Checkout, LandingPage, Orders } from './Pages'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import {
   PrivateRoute,
   ReversePrivateRoute,
@@ -13,16 +13,14 @@ import { useEffect, useState } from 'react'
 import { useAuth } from './Context/AuthContext'
 import { useApp } from './Context/AppContext'
 import { useToast } from './Context/ToastContext'
-import { Toast } from './Components'
-import agateLogo from "./Assets/Images/agateLogo.png"
-import { BsCart3, BsFillHeartFill } from 'react-icons/bs'
-import { FaUserAlt } from 'react-icons/fa'
+import { Navbar, Toast, UserOptions } from './Components'
 
 function App() {
   const { auth, authDispatch } = useAuth()
   const { app, appDispatch } = useApp()
   const { toast, toastDispatch } = useToast()
   const [userFeat, setUserFeat] = useState(false)
+  const navigate = useNavigate()
   useEffect(() => {
     const localStorageLoggedInToken = JSON.parse(
       localStorage.getItem('loggedInAgate'),
@@ -46,67 +44,20 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar">
-        <div className='logoContainer'>
-          <Link className="navLink" activeclassname="selectedNavPill" to="/">
-            <img className='logoImg' src={agateLogo} alt="Agate Logo" />
-          </Link>
-        </div>
-        <div className='navBulletsContainer'>
-          <ul className="navBullets">
-            <li className="navBullet">
-              <Link
-                className="navLink"
-                activeclassname="selectedNavPill"
-                to="/wishlist"
-              >
-                <BsFillHeartFill size={25} />
-                <span classname="navIconBadge">{auth.user?.wishlist.length}</span>
-              </Link>
-            </li>
-            <li className="navBullet">
-              <Link
-                className="navLink"
-                activeclassname="selectedNavPill"
-                to="/cart"
-              >
-                <BsCart3 size={25} />
-                <span classname="navIconBadge">{app.cart?.length}</span>
-              </Link>
-            </li>
-            <li className="navBullet">
-              <button onClick={() => setUserFeat(!userFeat)} className="navBtn">
-                <FaUserAlt size={25} />
-              </button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div className={userFeat ? 'userOptionsContainer' : 'userOptionsHidden'}>
-        <ul className="userOptions">
-          <li className='userOption'>
-            <Link
-              className="navLink"
-              activeclassname="selectedNavPill"
-              to={auth.loggedInToken ? "" : "/login"}
-              onClick={() => setUserFeat(!userFeat)}
-            >
-              {auth.loggedInToken ? auth.user?.name : 'Login'}
-            </Link>
-          </li>
-          <li className="userOption">
-            <button
-              onClick={() => {
-                logoutHandle(auth.loggedInToken, authDispatch, appDispatch)
-                setUserFeat(!userFeat)
-              }}
-              className={auth.loggedInToken ? 'navBtn' : 'userOptionsHidden'}
-            >
-              Logout
-            </button>
-          </li>
-        </ul>
-      </div>
+      <Navbar
+        wishlistNumber={auth.user?.wishlist.length}
+        cartNumber={app.cart?.length}
+        userClickHandle={() => setUserFeat(!userFeat)} />
+      <UserOptions
+        userFeat={userFeat}
+        hideList={() => setUserFeat(false)}
+        userName={auth.loggedInToken && auth.user?.name}
+        loggedIn={auth.loggedInToken} 
+        loginBtnClick={()=> {
+          navigate('/login')
+          setUserFeat(false)
+        }}
+        logoutBtnClick={() => logoutHandle(auth.loggedInToken, authDispatch, appDispatch)}/>
       {toast.showToast && <Toast toastMessage={toast.toastMessage} />}
       <Routes>
         <Route exact path="/" element={<LandingPage />} />

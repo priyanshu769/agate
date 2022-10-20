@@ -1,0 +1,35 @@
+.navbar {
+    width: 100%;
+    margin: 0;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoContainer {
+    margin: 0 0 0 1rem;
+}
+
+.logoImg {
+    width: 3rem;
+}
+
+.navBullets {
+    margin: 0 1rem;
+}
+
+.navBtn {
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 900;
+    padding: 1rem;
+}
+
+.navIconBadge {
+    background-color: var(--primary-dark);
+    border: 3px solid var(--primary-dark);
+    border-radius: 50%;
+  }
