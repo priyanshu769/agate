@@ -42,7 +42,7 @@ export const ProductsPage = () => {
     ; (async () => {
       try {
         const serverResponse = await axios.get(
-          'https://api-agate.herokuapp.com/products/',
+          'https://api-agate-production.up.railway.app/products/',
         )
         if (serverResponse.status === 200) {
           setProducts(serverResponse.data.products)

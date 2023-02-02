@@ -15,7 +15,7 @@ export const loginHandler = async (
     showToast(toastDispatch, "Logging In")
     try {
       const loginResponse = await axios.post(
-        'https://api-agate.herokuapp.com/login',
+        'https://api-agate-production.up.railway.app/login',
         { email: email, password: password },
       )
       if (loginResponse.data.success) {
@@ -49,7 +49,7 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
     showToast(toastDispatch, "Signing you up")
     if (!userToken) {
       const signupResponse = await axios.post(
-        'https://api-agate.herokuapp.com/signup',
+        'https://api-agate-production.up.railway.app/signup',
         {
           name: name,
           email: email,
@@ -81,7 +81,7 @@ export const signupHandle = async (userToken, name, email, password, authDispatc
 export const loadUser = async (userToken, authDispatch) => {
   try {
     const userResponse = await axios.get(
-      'https://api-agate.herokuapp.com/user',
+      'https://api-agate-production.up.railway.app/user',
       { headers: { Authorization: userToken } },
     )
     if (userResponse.data.success) {
@@ -94,7 +94,7 @@ export const loadUser = async (userToken, authDispatch) => {
 export const loadCart = async (userToken, appDispatch) => {
   try {
     const cartResponse = await axios.get(
-      'https://api-agate.herokuapp.com/cart/',
+      'https://api-agate-production.up.railway.app/cart/',
       { headers: { Authorization: userToken } },
     )
     if (cartResponse.data.success) {
@@ -116,7 +116,7 @@ export const addTocartHandle = async (
     if (userToken) {
       showToast(toastDispatch, "Adding Product to Cart")
       const addToCartResponse = await axios.post(
-        `https://api-agate.herokuapp.com/cart/${productId}/add`,
+        `https://api-agate-production.up.railway.app/cart/${productId}/add`,
         {},
         { headers: { Authorization: userToken } },
       )
@@ -141,7 +141,7 @@ export const removeFromCartHandle = async (
     if (userToken) {
       showToast(toastDispatch, "Removing Product from Cart")
       const removeFromCartResponse = await axios.post(
-        `https://api-agate.herokuapp.com/cart/${productId}/remove`,
+        `https://api-agate-production.up.railway.app/cart/${productId}/remove`,
         {},
         { headers: { Authorization: userToken } },
       )
@@ -166,7 +166,7 @@ export const addToWishlistHandle = async (
     showToast(toastDispatch, "Updating Wishlist")
     try {
       const addToWishlistResposne = await axios.post(
-        'https://api-agate.herokuapp.com/user/wishlistProduct',
+        'https://api-agate-production.up.railway.app/user/wishlistProduct',
         { productId: productId },
         { headers: { Authorization: userToken } },
       )
@@ -288,7 +288,7 @@ export const incrementHandler = async (
     showToast(toastDispatch, "Changing Quantity")
     try {
       const { data } = await axios.post(
-        `https://api-agate.herokuapp.com/cart/${cartProductId}/increment`,
+        `https://api-agate-production.up.railway.app/cart/${cartProductId}/increment`,
         {},
         { headers: { Authorization: userToken } },
       )
@@ -312,7 +312,7 @@ export const decrementHandler = async (
     showToast(toastDispatch, "Changing Quantity")
     try {
       const { data } = await axios.post(
-        `https://api-agate.herokuapp.com/cart/${cartProductId}/decrement`,
+        `https://api-agate-production.up.railway.app/cart/${cartProductId}/decrement`,
         {},
         { headers: { Authorization: userToken } },
       )
@@ -331,7 +331,7 @@ export const decrementHandler = async (
 export const emptyCart = async (userToken, appDispatch, toastDispatch) => {
   try {
     const { data } = await axios.post(
-      `https://api-agate.herokuapp.com/cart/emptyCart`,
+      `https://api-agate-production.up.railway.app/cart/emptyCart`,
       {},
       { headers: { Authorization: userToken } },
     )

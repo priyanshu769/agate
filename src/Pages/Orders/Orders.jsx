@@ -13,7 +13,7 @@ export const Orders = () => {
             if (auth.loggedInToken) {
                 try {
                     const serverResponse = await axios.get(
-                        'https://api-agate.herokuapp.com/orders/',
+                        'https://api-agate-production.up.railway.app/orders/',
                         { headers: { Authorization: auth.loggedInToken } }
                     )
                     if (serverResponse.status) {

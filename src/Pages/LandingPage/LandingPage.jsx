@@ -12,7 +12,7 @@ export const LandingPage = () => {
     ; (async () => {
       try {
         const serverResponse = await axios.get(
-          'https://api-agate.herokuapp.com/products/',
+          'https://api-agate-production.up.railway.app/products/',
         )
         if (serverResponse.status === 200) {
           const shuffledProducts = serverResponse.data.products.sort(()=> 0.5 - Math.random())

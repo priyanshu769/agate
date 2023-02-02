@@ -30,7 +30,7 @@ export const Cart = () => {
   const checkoutHandle = async (products, userToken, appDispatch, toastDispatch) => {
     showToast(toastDispatch, 'Placing Order')
     try {
-      const checkoutRes = await axios.post('https://api-agate.herokuapp.com/orders', { orderedProducts: products }, { headers: { Authorization: userToken } },)
+      const checkoutRes = await axios.post('https://api-agate-production.up.railway.app/orders', { orderedProducts: products }, { headers: { Authorization: userToken } },)
       console.log(checkoutRes)
       if (checkoutRes.data.success) {
         emptyCart(userToken, appDispatch, toastDispatch)
